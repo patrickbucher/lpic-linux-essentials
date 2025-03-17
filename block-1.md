@@ -41,7 +41,7 @@
     - Achtung: FreeBSD, NetBSD, OpenBSD usw. basieren auf Unix, nicht auf Linux!
 - Verbreitung
     - Desktop: vernachlässigbar
-    - Webserver: ca. 68% der Server
+    - Webserver: ca. 68% der Server (auf Unix-artigen Betriebssystemen)
     - Cloud: 90% der Arbeitslast (Stand: 2017)
 
 ### Die wichtigsten Open-Source-Anwendungen
@@ -134,3 +134,47 @@ Geschäftsmodelle:
 
 ### IKT-Fähigkeiten und Arbeiten mit Linux
 
+- verschiedene Desktop-Umgebungen
+    - GNOME: Einfachheit (wenige Einstellungen, eine Standardanwendung)
+        - Terminal: Gnome Terminal
+    - KDE: Mächtigkeit (viele Einstellungen, mehrere Anwendungen)
+        - Terminal: Konsole
+- Virtualisierung
+    - Xen
+    - KVM (am weitesten verbreitet)
+    - VirtualBox
+    - OpenStack (komplette IaaS-Plattform)
+- Passwortmanager
+    - KeePass (lokal)
+    - Bitwarden (inkl. Serveranwendung)
+- Verschlüsselung
+    - GnuPG: asymmetrische Verschlüsselung
+    - Festplattenverschlüsselung
+        - Stacked: verschlüsselte Daten innerhalb des Dateisystems (EncFS)
+        - Block Device: auf Dateisystemebene (dm-crypt, LUKS)
+        - plattformübergreifend: Veracrypt
+
+## Übungen
+
+### Paket suchen und installieren
+
+- Welches Paket stellt den Befehl `cowsay` zur Verfügung?
+- Installiere das entsprechende Paket und probiere den Befehl aus.
+- Entferne das Paket anschliessend wieder inkl. Abhänigkeiten, falls es welche installiert hat.
+
+### Lizenzen
+
+Falls du Open-Source- bzw. freie Software verwendest: Finde heraus, welche
+Lizenz diese Software verwendet. Handelt es sich um eine share-alike oder um
+eine permissive Lizenz?
+
+### SSH-Zugang
+
+Falls du ausserhalb von OneClick auf deine VM zugreifen möchtest, benötigst du
+einen SSH-Schlüssel. Befolge die
+[Anleitung](https://m346.frickelbude.ch/setup/ssh-key/index.html) und sende mir
+deinen Public Key zu, damit ich ihn auf deiner VM hinterlegen kann.
+
+Anschliessend kommst du folgendermassen auf deine VM:
+
+    ssh user@[IP-Adresse]
