@@ -110,6 +110,16 @@
         - `find ~ -type d -name Steuern`
         - `find ~ -type f -iname '*rechnung*.pdf`
 
-### 2.3)
+### 2.3) Verzeichnisse verwenden und Dateien auflisten
 
-### 2.4)
+#### Lektion 1
+
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.3/2.3_01/)
+
+#### Lektion 2
+
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.3/2.3_02/)
+
+### 2.4) Erstellen, Verschieben und Löschen von Dateien
+
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.4/2.4_01/)
