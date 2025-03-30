@@ -8,6 +8,13 @@
 
 ## Ablauf
 
+- erneuter Test OneClick
+- Theorie Unterthemen 2.1 und 2.2
+- Übungen Unterthemen 2.1 und 2.2
+- Theorie Unterthemen 2.3 und 2.4
+- Übungen Unterthemen 2.3 und 2.4
+- Fragerunde
+
 ## Thema 2
 
 ### 2.1) Grundlagen der Befehlszeile
