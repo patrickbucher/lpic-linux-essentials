@@ -2,6 +2,10 @@
 
 ## Ziel
 
+- Grundlagen der Befehlszeile erarbeiten (Befehle, Variablen).
+- Wissen, wie man sich selber helfen kann.
+- Dateien suchen und finden.
+
 ## Ablauf
 
 ## Thema 2
@@ -71,7 +75,40 @@
 
 ### 2.2) 
 
-[Quelle]
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.2/2.2_01/)
+
+- eingebaute Hilfe: `BEFEHL --help` oder `BEFEHL -h`
+    - nicht immer einheitlich, eher kurz
+- Manpages (_manual pages_)
+    - umfassende Hilfeseiten zu Befehlen und anderen Konzepten
+        - in mehrere Abschnitte gegliedert (immer ähnlicher Aufbau)
+        - mithilfe von Pager betrachtet (`less`)
+    - mehrere Bereiche
+        - 1: Benutzerbefehle
+        - 5: Konfigurationsdateien, Dateiformate
+        - 7: Verschiedenes
+        - 8: Systemadministrationsbefehle
+    - `man`
+        - `man BEGRIFF`
+            - z.B. `man passwd` (Benutzerbefehl)
+        - `man BEREICH BEGRIFF`
+            - z.B. `man 5 passwd` (Konfigurationsdatei)
+    - `apropos SUCHBEGRIFF`
+        - `apropos auth`: in allen Bereichen suchen
+        - `apropos -s 1 auth`: nur in Benutzerbefehlen suchen
+    - `whatis BEFEHL`
+        - Erklärung zu bekanntem Befehl erhalten
+- GNU Info
+    - Ersatz/Ergänzung zu Manpages vom GNU-Projekt
+    - mit Verlinkung
+    - `info BEGRIFF`
+- Dateien suchen
+    - `locate`: sucht nach Name im Index
+        - Index muss mit `updatedb` neu erstellt werden
+    - `find`: Filtert Dateien in Echtzeit
+        - Syntax: `find PFAD FILTER1 FILTER2 …`
+        - `find ~ -type d -name Steuern`
+        - `find ~ -type f -iname '*rechnung*.pdf`
 
 ### 2.3)
 
