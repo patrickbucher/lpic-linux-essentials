@@ -116,10 +116,58 @@
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.3/2.3_01/)
 
+- `tree`: Auflistung eines Verzeichnis(unter)baums
+- Konvention: keine Leerzeichen und Sonderzeichen in Dateinamen!
+    - erfordert Escaping/Quoting: `cd Steuern\ Jahr \ 2024` oder `cd 'Steuern Jahr 2024'`
+- `pwd`: aktuelles Arbeitsverzeichnis ausgeben
+- absolute Pfade: beginnen mit `/`
+- spezielle Pfade
+    - `.`: aktuelles Verzeichnis
+    - `..`: Elternverzeichnis
+- `ls`: Dateien/Verzeichnisse auflisten
+    `-a`: auch versteckte Dateien/Verzeichnisse
+        - starten mit `.` im Namen
+
 #### Lektion 2
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.3/2.3_02/)
 
+- `/`: Wurzelverzeichnis
+    - organisiert gemäss _Filesystem Hierarchy Standard_ (FHS)
+    - nur durch `root` bearbeitbar
+- `/home/$USER`: durch Benutzer `$USER` bearbeitbar
+    - Alias: `~` entspricht `$HOME` entspricht `/home/$USER`
+- `ls`: Dateien/Verzeichnisse auflisten
+    `-l`: detaillierte Auflistung
+         - Dateityp und Berechtigung
+         - Anzahl der Links zur Datei
+         - Eigentümer und -gruppe
+         - Grösse in Byte
+         - letzte Änderung
+         - Dateiname
+    - weitere Optionen: siehe Manpage!
+        - `-lh`, `-d`, `-t`, `-r`, `-X`, `-S`, `-R`
+
 ### 2.4) Erstellen, Verschieben und Löschen von Dateien
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/2/2.4/2.4_01/)
+
+- `mkdir`: Verzeichnis anlegen
+    - `mkdir -p`: fehlende Elternverzeichnise mitanlegen
+- `touch`: Datei anlegen oder deren Zeitstempel aktualisieren
+- `mv`: Datei "verschieben" bzw. umbenennen
+    - `-i`: interaktiv (nachfragen)
+- `rm`: Dateien und Verzeichniss löschen
+    - `-r`: rekursiv (für Verzeichnisse)
+    - `-i`: interaktiv (nachfragen)
+- `rmdir`: leere Verzeichnisse löschen
+- `cp`: kopieren von Dateien und Verzeichnissen
+    - `-r`: rekursiv (für Verzeichnisse)
+- Glob-Patterns
+    - `*`: beliebige Zeichen (0, 1, n)
+    - `?`: ein oder kein Zeichen (0, 1)
+    - `[]`: Zeichenklasse
+        - z.B. `[aeiou]` für Vokale
+        - z.B. `[0-9a-zA-Z]` für alpha-numerische Zeichen
+    - `[[:ZEICHENKLASSE:]]` siehe `man 7 regex`
+
