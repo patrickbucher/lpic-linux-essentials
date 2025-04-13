@@ -2,7 +2,13 @@
 
 ## Ziel
 
+- Kompression und Dekompression auf der Kommandozeile verwenden können
+- TODO
+- TODO
+
 ## Ablauf
+
+- TODO
 
 ## Thema 3: Die Macht der Befehlszeile
 
