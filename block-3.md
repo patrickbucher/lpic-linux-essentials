@@ -22,7 +22,7 @@
     - tiefe Kompressionsrate: grössere Dateien, schnellere Kompression
     - Portabilität: zip funktioniert praktisch überall
 
-Kompression einzelner Dateien:
+Kompression einzelner Dateien (Vorsicht: Quelldatei wird standardmässig gelöscht!):
 
     $ zip ngerman.zip /usr/share/dict/ngerman
     $ bzip2 -k -c /usr/share/dict/ngerman > ngerman.bz2
@@ -33,6 +33,8 @@ Kompression einzelner Dateien:
     836K    ngerman.gz
     616K    ngerman.xz
     836K    ngerman.zip
+
+Standardmässig wird die Textdatei ins gleiche Verzeichnis (`/usr/share/dict`) geschrieben und gelöscht. Dies ist aufgrund der fehlenden Berechtigung nicht möglich. Darum soll die Originaldatei mit `-k` beibehalten und mit `-c` die Ausgabe auf die Standardausgabe ausgegeben werden, die dann in eine Datei umgeleitet wird.
 
 Angabe der Kompressionsstufe (kleinere Zahl = höhere Kompression):
 
@@ -53,6 +55,27 @@ Betrachten von komprimierten Textdateien (Präfix `z` für gzip):
 
     $ zcat ngerman.gz
     $ zless ngerman.gz
+
+Gebräuchlicher ist die Verwendung von `tar`, welches Archive erstellt und die
+Kompression sogleich weiterdelegiert:
+
+- Kompression
+    - `-c`: "create" (Archiv erstellen)
+    - `-f`: "filename" (Dateiname des Archivs)
+    - Algorithmus
+        - `-j`: bzip2
+        - `-z`: gzip
+        - `-J`: xz
+- Dekompression
+    - `-x`: "eXtract" (Archiv entpacken)
+
+Beispiel:
+
+    $ tar -cjf words.tar.bz2 /usr/share/dict/*
+
+Bestehende unkomprimierte(!) Archive können auch erweitert werden.
+
+Verzeichnisse werden automatisch rekursiv komprimiert. (Bei `zip` ist `-r` nötig.)
 
 ### 3.2)
 
