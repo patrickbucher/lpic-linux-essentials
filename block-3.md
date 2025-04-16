@@ -33,7 +33,20 @@
 
 Kompression einzelner Dateien (Vorsicht: Quelldatei wird standardmässig gelöscht!):
 
-TODO: package für dictionaries (words)
+Beispieldaten (grosse Textdateien): Wörterbücher
+
+    $ sudo apt install wswiss wngerman
+
+Programme:
+
+    $ sudo apt install zip unzip bzip2
+
+Kompression einzelner Datien:
+
+    $ /usr/share/dict/swiss .
+    $ zip swiss.zip swiss
+    $ bzip2 swiss
+    $ bunzip2 swiss.bz2
 
     $ zip ngerman.zip /usr/share/dict/ngerman
     $ bzip2 -k -c /usr/share/dict/ngerman > ngerman.bz2
