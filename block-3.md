@@ -87,6 +87,10 @@ Verzeichnisse werden automatisch rekursiv komprimiert. (Bei `zip` ist `-r` nöti
 
 ### 3.2) Daten in Dateien suchen und extrahieren
 
+#### Lektion 1
+
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/3/3.2/3.2_01/)
+
 Prozesse können mit Dateien interagieren. Jeder Prozess hat standardmässig drei _File Handles_:
 
 - 0: `stdin` (Standardeingabe)
@@ -118,6 +122,81 @@ Mithilfe einer _Pipe_ wird die Ausgabe von einem Prozess zur Eingabe vom nächst
 
 Die einzelnen Prozesse können dabei teilweise _parallell_ ausgeführt werden!
 
-Unix-Philosophie: Programme sind _Filter_ und verzichten möglichst auf Interaktion.
+[Unix-Philosophie](https://shop.elsevier.com/books/the-unix-philosophy/gancarz/978-0-08-094819-5): Programme sind _Filter_ und verzichten möglichst auf Interaktion.
+
+#### Lektion 2
+
+[Quelle](https://learning.lpi.org/de/learning-materials/010-160/3/3.2/3.2_02/)
+
+Der Befehl `grep`:
+
+- Herkunft: Editor-Befehl "Global Regular Expression Print"
+- Verwendung: Filterung von Textzeilen nach Mustern (reguläre Ausdrücke)
+- Parameter
+    - `-i`: case insensitiv
+    - `-r`: rekursive Suche durch Verzeichnisbaum
+    - `-c`: Anzahl Treffer ("count")
+    - `-v`: invertierte Suche (unpassende Ergebnisse anzeigen)
+    - Auswahl des Dialekts (in aufsteigender Komplexität)
+        - `-F`: Suche nach fixen Strings
+        - `-G`: grundlegende reguläre Ausdrücke (Standard), siehe `man 7 regex` oder [Mastering Regular Expressions](https://www.oreilly.com/library/view/mastering-regular-expressions/0596528124/)
+        - `-E`: erweiterte reguläre Ausdrücke (Alias: `egrep` für `grep -E`)
+        - `-P`: Perl-kompatible reguläre Ausdrücke (PCRE)
+
+Moderne Neuimplementierung: [ripgrep](https://github.com/BurntSushi/ripgrep) alias `rg`
 
 ### 3.3) Von Befehlen zum Skript
+
+Zum Schreiben von Skripten benötigt man einen Texteditor:
+
+- `nano`: einsteigerfreundlich
+- `emacs`: eisnteigerfreundlich, aber sehr mächtig
+    - verwendet v.a. Tastenkombinationen
+- `vi`, `vim`: für Fortgeschrittene
+    - verwendet Modi: Navigationsmodus, Bearbeitungsmodus, Befehlsmodus
+- `ed`: für Masochisten (oder für Leute mit Nadeldrucker aber ohne Bildschirm)
+
+Beispiel: `nano hello.sh`
+
+```sh
+echo "Hello, World!"
+```
+
+Skript ausführbar machen:
+
+```sh
+chmod +x hello.sh
+```
+
+Skript ausführen:
+
+```sh
+./hello.sh
+```
+
+Zur Erinnerung: Nur Skripte inerhalb der in `$PATH` aufgelisteten Verzeichnisse können mit dem Namen ausgeführt werden!
+
+Der Interpreter wird mit der sogenannten "Shebang"-Zeile ("Hash, Bang") angegeben:
+
+```sh
+!#/usr/bin/bash
+```
+
+Zur Erinnerung: Variablen wurden in [Block 2](block-2.md) behandelt.
+
+Argumente sind durchnummerierte Variablen (`$1`, `$2`). `$0` ist der Name des jeweiligen Skripts. `$#` beinhaltet die Anzahl der mitgegebenen Argumente.
+
+Logik mit `if`/`then`/`else`:
+
+```sh
+#!/usr/bin/bash
+
+if [ $# -eq 1 ]
+then
+    echo "Hello, $1."
+else
+    echo "Hello."
+fi
+```
+
+`[` ist ein Alias für `test` (eingebauter Shell-Befehl). Siehe `man 1 test`.
