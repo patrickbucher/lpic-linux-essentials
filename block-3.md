@@ -30,6 +30,8 @@
 
 Kompression einzelner Dateien (Vorsicht: Quelldatei wird standardmässig gelöscht!):
 
+TODO: package für dictionaries (words)
+
     $ zip ngerman.zip /usr/share/dict/ngerman
     $ bzip2 -k -c /usr/share/dict/ngerman > ngerman.bz2
     $ gzip -k -c /usr/share/dict/ngerman > ngerman.gz
@@ -83,6 +85,39 @@ Bestehende unkomprimierte(!) Archive können auch erweitert werden.
 
 Verzeichnisse werden automatisch rekursiv komprimiert. (Bei `zip` ist `-r` nötig.)
 
-### 3.2)
+### 3.2) Daten in Dateien suchen und extrahieren
 
-### 3.3)
+Prozesse können mit Dateien interagieren. Jeder Prozess hat standardmässig drei _File Handles_:
+
+- 0: `stdin` (Standardeingabe)
+    - Umleitung: `<`, z.B. `sort <words.txt`
+- 1: `stdout` (Standardausgabe)
+    - Umleitung: `>`, z.B. `ls >files.txt`
+- 2: `stderr` (Standardfehler)
+    - Umleitung: `2>`, z.B. `find / 2>errors.txt`
+
+Mit `>` wird die Ausgabedatei überschrieben! Mit `>>` wird Inhalt angehängt.
+
+Standardausgabe und -fehler in die gleiche Datei umleiten:
+
+    find / >out.txt 2>&1
+
+Alternative Syntax:
+
+    find / &>out.txt
+
+"Die Ausgabe in `out.txt`, die Fehler in die gleiche Datei wie die Ausgabe!"
+
+Das pseudo-Gerät `/dev/null` fungiert als "schwarzes Loch", wenn man Informationen ignorieren möchte:
+
+    find / 2>/dev/null
+
+Mithilfe einer _Pipe_ wird die Ausgabe von einem Prozess zur Eingabe vom nächsten Prozess:
+
+    cat some-words.txt more-words.txt | grep '^[A-Z]' | sort | uniq | head
+
+Die einzelnen Prozesse können dabei teilweise _parallell_ ausgeführt werden!
+
+Unix-Philosophie: Programme sind _Filter_ und verzichten möglichst auf Interaktion.
+
+### 3.3) Von Befehlen zum Skript
