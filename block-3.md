@@ -3,12 +3,15 @@
 ## Ziel
 
 - Kompression und Dekompression auf der Kommandozeile verwenden können
-- TODO
-- TODO
+- Daten in Dateien suchen und extrahieren (`grep`) können
+- einfache Skripte schreiben können
 
 ## Ablauf
 
-- TODO
+- Erneuter Test OneClick (sollte nun funktionieren)
+- 3x
+    - Theorieblock à 15 min.
+    - Übungsblock à 10 min.
 
 ## Thema 3: Die Macht der Befehlszeile
 
