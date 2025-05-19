@@ -56,6 +56,28 @@
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/5/5.2/5.2_01/)
 
+- `useradd(8)`: Benutzer hinzufügen
+    - `-c`: Kommentar (z.B. voller Name)
+    - `-d`: Home-Verzeichnis spezifizieren (bei Abweichungen von `/home/BENUTZERNAME`)
+    - `-f N`: Passwort muss innerhalb von `N` Tagen aktualisiert werden
+    - `-g GID`: GID definieren
+    - `-G GROUPS`: Den Benutzer weiteren Gruppen hinzufügen
+    - `-m`: ein Home-Verzeichnis erstellen
+    - `-s SHELL`: Login-Shell definieren
+    - `-u UID`: UID definieren
+    - Der Inhalt des Home-Verzeichnis wird aus "Skeleton-Verzeichnis" `/etc/skel` erstellt
+- `userdel(8)`: Benutzer entfernen
+    - `-r`: auch Home-Verzeichnis löschen
+- `groupadd(8)`: Benutzergruppe hinzufügen
+    - `-g GID`: GID definieren
+- `groupdel(8)`: Benutzergruppe entfernen
+- `passwd [BENUTZER]`: Passwort ändern
+    - `-d`: Passwort löschen (passwortloses Konto)
+    - `-e`: Passwortänderung durch Benutzer erzwingen
+    - `-l`: Benutzerkonto sperren
+    - `-u`: Sperrung aufheben
+    - `-S`: Statusinformationen ausgeben
+
 ### Dateiberechtigungen und Dateieigentum verwalten
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/5/5.3/5.3_01/)
