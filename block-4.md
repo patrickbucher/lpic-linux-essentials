@@ -7,7 +7,8 @@
 ## Ablauf
 
 - Test mit Cloud Castle durchführen (Alternative zu OneClick)
-- 2x
+- Nachholen von [Thema 3.3](block-3.md#33-von-befehlen-zum-skript)
+- soweit wir kommen: 2x
     - zwei Theorieblöcke
     - ein Übungsblock
 
