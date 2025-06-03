@@ -82,6 +82,70 @@
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/5/5.3/5.3_01/)
 
+- dreistufiges Sicherheitskonzept
+    1. Besitzer (user: `u`)
+    2. Gruppe (group: `g`)
+    3. Rest (others: `o`)
+- Ausgabe von `ls -l` (erste Spalte):
+    - `drwxr-x---`
+        - Typ: `d`: Verzeichnis (directory)
+        - user: `rwx`: read, write, execute
+        - group: `r-x`: read, execute
+        - others: `---`: [keine Berechtigungen]
+        - "execute" steht in diesem Kontext für das Betreten eines Verzeichnisses
+    - `-rw-rw-r--`
+        - Typ: `-`: Datei (file)
+        - user: `rw-`: read, write
+        - group: `rw-`: read, write
+        - others: `r--`: read
+- Bedeutung für Dateien
+    - `r`: Datei lesen (ausgeben)
+    - `w`: Datei schreiben (editieren)
+    - `x`: Datei ausführen (Skript, Binärprogramm)
+- Bedeutung für Verzeichnisse
+    - `r`: Dateinamen auflisten
+    - `w`: Dateien im Verzeichnis erstellen & löschen; Berechtigungen ändern
+    - `x`: ins Verzeichnis wechseln (mit `cd`)
+- weitere Typen:
+    - `l`: soft link
+    - `b`: block device
+    - `c`: character device
+    - `s`: socket
+- Oktalwerte
+    - `r`: 4
+    - `w`: 2
+    - `x`: 1
+- Anpassung der Berechtigungen mit `chmod`
+    - absolut: mit Oktalzahlen ("numeric mode")
+        - `chmod 777`: setzt alle Berechtigungen auf `rwx`
+        - `chmod 750`: setzt die Berechtigungen auf `rwxrw----`
+        - `chmod 644`: setzt die Berechtigungen auf `rw-r--r--`
+    - relativ: mit Stufenangabe ("symbolic mode")
+        - `chmod ug+x,o-r`: dem Besitzer und der Gruppe "execute" erlauben; dem Rest "read" verbieten
+        - `chmod +r`: allen "read" erlauben
+- Anpassung des Dateibesitzes
+    - Besitzer: `chown user DATEI` ("CHange OWNership")
+    - Besitzer & Gruppe: `chown user:group DATEI`
+    - Gruppe: `chgrp group DATEI` ("CHange GRouP")
+- Spezialberechtigungen
+    - Leitfragen
+        - Wie kann ich verhindern, dass Benutzer in einem geteilten Verzeichnis Dateien löschen oder umbenennen?
+        - Wie kann ich es normalen Benutzern erlauben, Programme mit den Berechtigungen einer priviligierten Gruppe auszuführen?
+        - Wie kann ich es normalen Benutzern erlauben, Programme mit den Berechtigugnen eines priviligierten Benutzers auszuführen?
+    - Sticky Bit: 1 bzw. `t` statt `x` in "others"
+        - Verhindert Löschung/Umbenennung von Datei durch Nicht-Besitzer.
+        - `chmod 1755`
+        - `chmod o+t`
+    - Set GID: 2 bzw. `s` statt `x` in "group"
+        - Dateien: Prozess läuft mit Berechtigung der Gruppe statt des ausführenden Benutzers.
+        - Verzeichnisse: Darunterliegende Verzeichnisse erben Gruppenberechtigung.
+        - `chmod 2755`
+        - `chmod g+s`
+    - Set UID: 4 bzw. `s` statt `x` in "user"
+        - Dateien: Prozess läuft mit Berechtigung des Besitzers statt des ausführenden Benutzers.
+        - `chmod 6755`
+        - `chmod u+s`
+
 ### Besondere Verzeichnisse und Dateien
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/5/5.4/5.4_01/)
