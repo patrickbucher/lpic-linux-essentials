@@ -149,3 +149,27 @@
 ### Besondere Verzeichnisse und Dateien
 
 [Quelle](https://learning.lpi.org/de/learning-materials/010-160/5/5.4/5.4_01/)
+
+- temporäre Dateien
+    - `/tmp`: Inhalt _kann_ bei Neustart gelöscht werden (nicht zwingend)
+    - `/var/tmp`: Inhalt wird _nicht_ automatisch bei Neustart gelöscht
+    - `/run` bzw. `/var/run`: Inhalt (Laufzeitdaten) _muss_ bei Neustart gelöscht werden
+    - In diesen Verzeichnissen kommt das Sticky Bit zum Einsatz, damit verschiedene Benutzer einander nicht die temporären Dateien weglöschen.
+- Links
+    - symbolische Links bzw. "soft" links
+        - Verweis auf eine andere Datei
+        - wird die Datei gelöscht, funktioniert der Link nicht mehr
+        - `ln -s DATEI LINK`
+        - funktionieren auf für Verzeichnisse (sinnvollerweise immer absolute Pfade verwenden!)
+        - Berechtigungen nur scheinbar immer `rwx`: es zählen die Berechtigungen der zugrundeliegenden Datei bzw. des zugrundeliegenden Verzeichnisses.
+        - Trolling
+            - `mkdir -p ~/one/two/three/four`
+            - `ln -s ~/one ~/one/two/three/four/one`
+            - `cd one/two/three/four/one/two/three/four/one/two/`
+            - `pwd`
+    - harte Links
+        - alternativer Name für eine Datei
+        - jede Datei hat einen harten Link, unter dem sie als Dateiname zur Verfügung steht
+        - `ln DATEI LINK`
+    - `ls -li` listet auch inode auf
+    - `ls -l` listet auch _link count_ auf
